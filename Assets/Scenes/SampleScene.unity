@@ -1330,11 +1330,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &752243773 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3300976154835006766, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
+  m_PrefabInstance: {fileID: 3300976155559977235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &752243776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3300976154835006803, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
   m_PrefabInstance: {fileID: 3300976155559977235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &752243777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752243773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b6c36df91c866145a41f4219c51b53b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  verticalSensitivity: 4
+  horizontalSensitivity: 5
+  cannon: {fileID: 752243776}
+  barrelHolder: {fileID: 1280092480}
+  minMaxBarrelAngle: {x: 35, y: 80}
 --- !u!1 &893502669
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1887,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228239021}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1280092480 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3300976154288277587, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
+  m_PrefabInstance: {fileID: 3300976155559977235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1306102435
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,6 +3008,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3300976154288277587, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7933534
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300976154288277587, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.60876137
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300976154288277587, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 3300976154835006766, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
       propertyPath: m_Name
       value: cannon
