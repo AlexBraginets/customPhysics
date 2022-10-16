@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private Transform[] vertices;
     public Vector3 direction;
     public float speed;
     private Vector3 originalPosition;
@@ -38,9 +37,9 @@ public class Bullet : MonoBehaviour
         direction = fullSpeed;
         bool isHit = false;
         RaycastHit hit = new RaycastHit();
-        foreach (var vertex in vertices)
+        foreach (var vertex in colliderData.Data.vertices)
         {
-            if (IsHit(Time.deltaTime, vertex.position,out hit))
+            if (IsHit(Time.deltaTime, transform.TransformPoint(vertex) ,out hit))
             {
                 isHit = true;
                 break;
