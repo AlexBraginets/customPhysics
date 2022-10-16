@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MeshManipulation;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -13,6 +14,8 @@ public class Bullet : MonoBehaviour
     private Vector3 originalDirection;
     [SerializeField] private LayerMask hitLayer;
     [SerializeField] private float gravity = 9.8f;
+    [SerializeField] private BulletBuilder builder;
+    [SerializeField] private ColliderDataHolder colliderData;
     private void Awake()
     {
         originalPosition = transform.position;
@@ -24,6 +27,7 @@ public class Bullet : MonoBehaviour
     {
         this.speed = speed;
         this.direction = direction;
+        builder.Build();
     }
 
     private void Update()

@@ -1,4 +1,7 @@
+using System;
+using Data;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace MeshManipulation
 {
@@ -77,16 +80,18 @@ namespace MeshManipulation
         private static readonly Vector3[] referenceCubeVertices;
         private static readonly int[] cubeIndeces;
         private static readonly Vector2[] cubeUVs;
+        private const float rndVertexOffset = .05f;
 
-        public static Mesh GenerateBulletMesh()
+        public static Mesh GenerateBulletMesh(out ColliderData colliderData)
         {
             Mesh mesh = new Mesh();
-            mesh.SetVertices(GenerateBulletMeshVertices());
+            var vertices = GenerateBulletMeshVertices();
+            mesh.SetVertices(vertices);
             mesh.SetIndices(cubeIndeces, MeshTopology.Quads, 0);
             mesh.SetUVs(0, cubeUVs);
             mesh.RecalculateBounds();
             mesh.RecalculateNormals();
-
+            colliderData = GetColliderData(vertices);
             return mesh;
         }
 
@@ -95,9 +100,23 @@ namespace MeshManipulation
             Vector3[] vertices = referenceCubeVertices;
             for (int i = 0; i < 8; i++)
             {
+                vertices[i] += GetRandomVertexOffset();
+                vertices[i + 8] = vertices[i];
             }
 
             return vertices;
+        }
+
+        private static ColliderData GetColliderData(Vector3[] vertices)
+        {
+            Vector3[] colliderDataVertices = new Vector3[8];
+            Array.Copy(vertices, colliderDataVertices, 8);
+            return new ColliderData(colliderDataVertices);
+        }
+
+        private static Vector3 GetRandomVertexOffset()
+        {
+            return Random.insideUnitSphere * rndVertexOffset;
         }
     }
 }

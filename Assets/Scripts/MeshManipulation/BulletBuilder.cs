@@ -1,4 +1,5 @@
 using System;
+using Data;
 using UnityEngine;
 
 namespace MeshManipulation
@@ -6,15 +7,11 @@ namespace MeshManipulation
     public class BulletBuilder : MonoBehaviour
     {
         [SerializeField] private MeshFilter meshFilter;
-
-        private void Awake()
+        [SerializeField] private ColliderDataHolder colliderData;
+        public void Build()
         {
-            BuildMesh();
-        }
-
-        public void BuildMesh()
-        {
-            meshFilter.mesh = BulletBuilderUtils.GenerateBulletMesh();
+            meshFilter.mesh = BulletBuilderUtils.GenerateBulletMesh(out ColliderData colliderData);
+            this.colliderData.Data = colliderData;
         }
     }
 }
