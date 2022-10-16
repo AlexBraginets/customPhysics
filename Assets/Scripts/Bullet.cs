@@ -20,6 +20,12 @@ public class Bullet : MonoBehaviour
         originalDirection = direction;
     }
 
+    public void Setup(float speed, Vector3 direction)
+    {
+        this.speed = speed;
+        this.direction = direction;
+    }
+
     private void Update()
     {
         Vector3 fullSpeed = speed * direction.normalized;

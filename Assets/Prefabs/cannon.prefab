@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3300976154288277587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: rotation point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3300976154835006803}
   - component: {fileID: 3300976154835006764}
   - component: {fileID: 3300976154835006765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 3300976155167235433}
   - component: {fileID: 3300976155167235439}
   - component: {fileID: 3300976155167235432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

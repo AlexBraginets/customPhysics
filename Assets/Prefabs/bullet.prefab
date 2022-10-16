@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5311438778435272304}
   - component: {fileID: 5311438778435272311}
   - component: {fileID: 5311438778435272310}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 5311438778595684666}
   - component: {fileID: 5311438778595684665}
   - component: {fileID: 5311438778595684664}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 5311438779002985908}
   - component: {fileID: 5311438779002985915}
   - component: {fileID: 5311438779002985914}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 5311438779121131149}
   - component: {fileID: 5311438779121131148}
   - component: {fileID: 5311438779121131155}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 5311438779144150876}
   - component: {fileID: 5311438779144150883}
   - component: {fileID: 5311438779144150882}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 5311438779147576864}
   - component: {fileID: 5311438779147576871}
   - component: {fileID: 5311438779147576870}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -580,7 +580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5311438779738837460}
   - component: {fileID: 5311438779738837467}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ MonoBehaviour:
   speed: 20
   hitLayer:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
   gravity: 10
 --- !u!1 &5311438779856400387
 GameObject:
@@ -640,7 +640,7 @@ GameObject:
   - component: {fileID: 5311438779856400636}
   - component: {fileID: 5311438779856400639}
   - component: {fileID: 5311438779856400638}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 5311438779973171091}
   - component: {fileID: 5311438779973171090}
   - component: {fileID: 5311438779973171089}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -825,7 +825,7 @@ GameObject:
   - component: {fileID: 5311438780127761883}
   - component: {fileID: 5311438780127761882}
   - component: {fileID: 5311438780127761881}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: vertice 1 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
