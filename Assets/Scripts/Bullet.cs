@@ -29,10 +29,11 @@ public class Bullet : MonoBehaviour
         builder.Build();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        Debug.Log(Time.fixedDeltaTime);
         Vector3 fullSpeed = speed * direction.normalized;
-        fullSpeed.y -= gravity * Time.deltaTime;
+        fullSpeed.y -= gravity * Time.fixedDeltaTime;
         speed = fullSpeed.magnitude;
         direction = fullSpeed;
         bool isHit = false;

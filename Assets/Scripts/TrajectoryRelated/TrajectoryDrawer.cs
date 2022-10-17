@@ -11,7 +11,7 @@ namespace TrajectoryRelated
         [SerializeField] private LayerMask hitLayer;
         private const float gravity = 9.8f;
 
-        public void Draw(Vector3 startPoint, Vector3 speed, float dt = .05f, float maxDistance = 500f)
+        public void Draw(Vector3 startPoint, Vector3 speed, float dt = .02f, float maxDistance = 500f)
         {
             List<Vector3> points = new List<Vector3>()
             {

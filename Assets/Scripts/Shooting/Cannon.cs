@@ -10,6 +10,7 @@ namespace Shooting
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private float bulletSpeed;
         [SerializeField] private TrajectoryDrawer trajectoryDrawer;
+        [SerializeField] private AdvancedHitPredictor advancedHitPredictor;
         private bool canShoot
         {
             get
@@ -17,6 +18,13 @@ namespace Shooting
                 return true;
             }
         }
+
+        private void Awake()
+        {
+            advancedHitPredictor.Setup(null, shootingPoint);
+            advancedHitPredictor.ResetColliderData();
+        }
+
         public bool TryShoot()
         {
             if (!canShoot) return false;
@@ -36,6 +44,7 @@ namespace Shooting
         {
             var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
             bullet.Setup(bulletSpeed, shootingPoint.up);
+            advancedHitPredictor.Setup(bullet.GetComponent<ColliderDataHolder>().Data , shootingPoint);
         }
     }
 }

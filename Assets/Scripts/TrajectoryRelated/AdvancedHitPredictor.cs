@@ -14,13 +14,18 @@ namespace TrajectoryRelated
             _bullet = bullet;
         }
 
+        public void ResetColliderData()
+        {
+            _colliderData = new ColliderData(  new []{ Vector3.zero});
+        }
+
         protected override bool IsHit(float dt, Vector3 speed, Vector3 origin, out RaycastHit hit)
         {
             bool isHit = false;
             hit = new RaycastHit();
             foreach (var vertex in _colliderData.vertices)
             {
-                if (base.IsHit(dt, speed, vertex + _bullet.TransformDirection(vertex),
+                if (base.IsHit(dt, speed, origin + _bullet.TransformDirection(vertex),
                         out hit))
                 {
                     isHit = true;
