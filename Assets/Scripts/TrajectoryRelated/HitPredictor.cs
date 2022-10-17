@@ -39,7 +39,7 @@ namespace TrajectoryRelated
             return hitHasHappened;
         }
 
-        public List<Vector3> GetTrajectory(out float hitTime, float dt, float maxDistance, Vector3 speed,
+        public  List<Vector3> GetTrajectory(out float hitTime, float dt, float maxDistance, Vector3 speed,
             Vector3 startPoint)
         {
             List<Vector3> trajectory = new List<Vector3>();
@@ -78,7 +78,7 @@ namespace TrajectoryRelated
             speed.y -= gravity * dt;
         }
 
-        private bool IsHit(float dt, Vector3 speed, Vector3 vertexPosition, out RaycastHit hit)
+        protected virtual bool IsHit(float dt, Vector3 speed, Vector3 vertexPosition, out RaycastHit hit)
         {
             Ray ray = new Ray(vertexPosition, speed);
             bool isHit = Physics.Raycast(ray, out hit, speed.magnitude * dt, hitLayer);
