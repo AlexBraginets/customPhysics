@@ -30,7 +30,6 @@ namespace TrajectoryRelated
                 points.Add(position);
             }
 
-            points = hitPredictor.GetTrajectory(out float hitTime, dt, maxDistance, startSpeed, startPoint);
             lineRenderer.positionCount = points.Count;
 
             lineRenderer.SetPositions(points.ToArray());

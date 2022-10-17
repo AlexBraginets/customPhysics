@@ -1231,7 +1231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &677771484
 Transform:
   m_ObjectHideFlags: 0
@@ -1410,7 +1410,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5311438779738837467, guid: 31c61d3fd9dd6ec448c04f625969b6ee, type: 3}
   bulletSpeed: 50
   trajectoryDrawer: {fileID: 10681989}
-  advancedHitPredictor: {fileID: 0}
 --- !u!1 &893502669
 GameObject:
   m_ObjectHideFlags: 0
