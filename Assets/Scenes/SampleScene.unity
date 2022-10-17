@@ -1359,6 +1359,96 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3300976154835006766, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
   m_PrefabInstance: {fileID: 3300976155559977235}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &752243774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752243773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd91d2fe0bd9b1f408bd13daf57e3eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.00094256445
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  yCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: -0
+      value: 0.50047123
+      inSlope: -4.492932
+      outSlope: -4.492932
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.08274651
+    - serializedVersion: 3
+      time: 0.05033569
+      value: 0.29898357
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.175
+      value: 0.4999988
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  zCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.00094256445
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 136
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &752243775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752243773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa82ae66e98de694d890dfdf0b877205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationStep: 0.02
+  animationClip: {fileID: 752243774}
+  target: {fileID: 417922170}
 --- !u!4 &752243776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3300976154835006803, guid: 5c3794a9aa2dce6488e1402c30469ff8, type: 3}
@@ -1410,6 +1500,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5311438779738837467, guid: 31c61d3fd9dd6ec448c04f625969b6ee, type: 3}
   bulletSpeed: 50
   trajectoryDrawer: {fileID: 10681989}
+  animator: {fileID: 752243775}
 --- !u!1 &893502669
 GameObject:
   m_ObjectHideFlags: 0

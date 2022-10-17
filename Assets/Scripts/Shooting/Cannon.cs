@@ -1,6 +1,7 @@
 using System;
 using TrajectoryRelated;
 using UnityEngine;
+using Animator = CustomAnimator.Animator;
 
 namespace Shooting
 {
@@ -10,6 +11,7 @@ namespace Shooting
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private float bulletSpeed;
         [SerializeField] private TrajectoryDrawer trajectoryDrawer;
+        [SerializeField] private Animator animator;
         private bool canShoot
         {
             get
@@ -36,6 +38,7 @@ namespace Shooting
         {
             var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
             bullet.Setup(bulletSpeed, shootingPoint.up);
+            animator.Play();
         }
     }
 }
