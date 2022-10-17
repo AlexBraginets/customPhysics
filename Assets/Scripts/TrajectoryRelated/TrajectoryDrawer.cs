@@ -6,6 +6,7 @@ namespace TrajectoryRelated
 {
     public class TrajectoryDrawer : MonoBehaviour
     {
+        [SerializeField] private HitPredictor hitPredictor;
         [SerializeField] private LineRenderer lineRenderer;
         [SerializeField] private LayerMask hitLayer;
         private const float gravity = 9.8f;
@@ -18,6 +19,7 @@ namespace TrajectoryRelated
             };
             float distancePassed = 0f;
             Vector3 position = startPoint;
+            Vector3 startSpeed = speed;
             bool isHit = false;
             RaycastHit hit = new RaycastHit();
             while (distancePassed < maxDistance && !IsHit(dt, speed, position, out hit))
@@ -28,6 +30,7 @@ namespace TrajectoryRelated
                 points.Add(position);
             }
 
+            points = hitPredictor.GetTrajectory(out float hitTime, dt, maxDistance, startSpeed, startPoint);
             lineRenderer.positionCount = points.Count;
 
             lineRenderer.SetPositions(points.ToArray());
