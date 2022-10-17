@@ -1,3 +1,5 @@
+using System;
+using TrajectoryRelated;
 using UnityEngine;
 
 namespace Shooting
@@ -7,6 +9,7 @@ namespace Shooting
         [SerializeField] private Transform shootingPoint;
         [SerializeField] private Bullet bulletPrefab;
         [SerializeField] private float bulletSpeed;
+        [SerializeField] private TrajectoryDrawer trajectoryDrawer;
         private bool canShoot
         {
             get
@@ -19,6 +22,14 @@ namespace Shooting
             if (!canShoot) return false;
             Shoot();
             return true;
+        }
+
+        private int i = 0;
+        private void Update()
+        {
+            i++;
+            if (i % 5 != 0) return;
+            trajectoryDrawer.Draw(shootingPoint.position, shootingPoint.up * bulletSpeed);
         }
 
         private void Shoot()
