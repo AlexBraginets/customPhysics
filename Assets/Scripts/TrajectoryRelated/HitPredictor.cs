@@ -39,6 +39,13 @@ namespace TrajectoryRelated
             return hitHasHappened;
         }
 
+        public bool IsLastHit(Vector3 location, Vector3 speed)
+        {
+            float maxDistance = 100f;
+            float dt = .02f;
+            return CalculateHitTime(out float hitTime,  dt, maxDistance, speed,  location) == false;
+        }
+
         public  List<Vector3> GetTrajectory(out float hitTime, float dt, float maxDistance, Vector3 speed,
             Vector3 startPoint)
         {

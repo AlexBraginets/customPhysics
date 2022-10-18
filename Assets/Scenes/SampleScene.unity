@@ -1863,6 +1863,7 @@ MonoBehaviour:
   animator: {fileID: 752243775}
   cameraShake: {fileID: 963194229}
   explosionSpawner: {fileID: 42033251}
+  hitPredictor: {fileID: 32848542}
 --- !u!114 &752243782
 MonoBehaviour:
   m_ObjectHideFlags: 0

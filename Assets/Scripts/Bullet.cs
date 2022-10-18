@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DecalRelated;
 using MeshManipulation;
+using TrajectoryRelated;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -16,6 +17,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float gravity = 9.8f;
     [SerializeField] private BulletBuilder builder;
     [SerializeField] private ColliderDataHolder colliderData;
+    private HitPredictor hitPredictor;
     public event Action<Vector3, Vector3> OnLastHit;
 
     private void Awake()
@@ -25,16 +27,16 @@ public class Bullet : MonoBehaviour
         originalDirection = direction;
     }
 
-    public void Setup(float speed, Vector3 direction)
+    public void Setup(float speed, Vector3 direction, HitPredictor hitPredictor)
     {
         this.speed = speed;
         this.direction = direction;
         builder.Build();
+        this.hitPredictor = hitPredictor;
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(Time.fixedDeltaTime);
         Vector3 fullSpeed = speed * direction.normalized;
         fullSpeed.y -= gravity * Time.fixedDeltaTime;
         speed = fullSpeed.magnitude;
@@ -65,7 +67,11 @@ public class Bullet : MonoBehaviour
             {
                 decalHandler.Add(uv);
             }
-            LastHit(hit);
+
+            if (hitPredictor.IsLastHit(transform.position, direction))
+            {
+                LastHit(hit);
+            }
 
         }
     }
@@ -73,7 +79,8 @@ public class Bullet : MonoBehaviour
     private void LastHit(Vector3 position, Vector3 normal)
     {
         OnLastHit?.Invoke(position, normal);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        // Destroy(gameObject);
     }
 
     private void LastHit(RaycastHit hit)

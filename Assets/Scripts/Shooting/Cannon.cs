@@ -15,6 +15,7 @@ namespace Shooting
         [SerializeField] private Animator animator;
         [SerializeField] private CameraShake cameraShake;
         [SerializeField] private ExplosionSpawner explosionSpawner;
+        [SerializeField] private HitPredictor hitPredictor;
 
         public void SetBulletSpeed(float power)
         {
@@ -47,7 +48,7 @@ namespace Shooting
         private void Shoot()
         {
             var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
-            bullet.Setup(bulletSpeed, shootingPoint.up);
+            bullet.Setup(bulletSpeed, shootingPoint.up, hitPredictor);
             bullet.OnLastHit += explosionSpawner.SpawnExplosion;
             animator.Play();
             cameraShake.Apply();
