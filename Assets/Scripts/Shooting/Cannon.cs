@@ -15,6 +15,13 @@ namespace Shooting
         [SerializeField] private Animator animator;
         [SerializeField] private CameraShake cameraShake;
         [SerializeField] private ExplosionSpawner explosionSpawner;
+
+        public void SetBulletSpeed(float power)
+        {
+            bulletSpeed = power;
+        }
+
+        public float GetBulletSpeed() => bulletSpeed;
         private bool canShoot
         {
             get
