@@ -79,8 +79,7 @@ public class Bullet : MonoBehaviour
     private void LastHit(Vector3 position, Vector3 normal)
     {
         OnLastHit?.Invoke(position, normal);
-        gameObject.SetActive(false);
-        // Destroy(gameObject);
+        Destroy(gameObject);
     }
 
     private void LastHit(RaycastHit hit)
