@@ -55,15 +55,18 @@ public class Bullet : MonoBehaviour
         else
         {
             Vector3 hitDirVector3 = hit.normal;
+            bool isdecalHit = Physics.Raycast(new Ray(transform.position, direction), out var decalHit, 2f, hitLayer);
             direction = Vector3.Reflect(direction, hitDirVector3);
-            LastHit(hit);
-            var uv = hit.textureCoord;
-            var decalHandler = hit.collider.GetComponent<DecalHandler>();
+
+            if (!isdecalHit) decalHit = hit;
+            var uv = decalHit.textureCoord;
+            var decalHandler = decalHit.collider.GetComponent<DecalHandler>();
             if (decalHandler)
             {
                 decalHandler.Add(uv);
             }
-            
+            LastHit(hit);
+
         }
     }
 
