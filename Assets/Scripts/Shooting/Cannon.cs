@@ -14,6 +14,7 @@ namespace Shooting
         [SerializeField] private TrajectoryDrawer trajectoryDrawer;
         [SerializeField] private Animator animator;
         [SerializeField] private CameraShake cameraShake;
+        [SerializeField] private ExplosionSpawner explosionSpawner;
         private bool canShoot
         {
             get
@@ -40,6 +41,7 @@ namespace Shooting
         {
             var bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
             bullet.Setup(bulletSpeed, shootingPoint.up);
+            bullet.OnLastHit += explosionSpawner.SpawnExplosion;
             animator.Play();
             cameraShake.Apply();
         }

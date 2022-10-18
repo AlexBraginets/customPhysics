@@ -15,6 +15,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float gravity = 9.8f;
     [SerializeField] private BulletBuilder builder;
     [SerializeField] private ColliderDataHolder colliderData;
+    public event Action<Vector3, Vector3> OnLastHit;
+
     private void Awake()
     {
         originalPosition = transform.position;
@@ -40,7 +42,7 @@ public class Bullet : MonoBehaviour
         RaycastHit hit = new RaycastHit();
         foreach (var vertex in colliderData.Data.vertices)
         {
-            if (IsHit(Time.deltaTime, transform.TransformPoint(vertex) ,out hit))
+            if (IsHit(Time.deltaTime, transform.TransformPoint(vertex), out hit))
             {
                 isHit = true;
                 break;
@@ -53,13 +55,25 @@ public class Bullet : MonoBehaviour
         {
             Vector3 hitDirVector3 = hit.normal;
             direction = Vector3.Reflect(direction, hitDirVector3);
+            LastHit(hit);
         }
+    }
+
+    private void LastHit(Vector3 position, Vector3 normal)
+    {
+        OnLastHit?.Invoke(position, normal);
+        Destroy(gameObject);
+    }
+
+    private void LastHit(RaycastHit hit)
+    {
+        LastHit(hit.point, hit.normal);
     }
 
     private bool IsHit(float dt, Vector3 vertexPosition, out RaycastHit hit)
     {
         Ray ray = new Ray(vertexPosition, direction);
-        bool isHit = Physics.Raycast(ray, out  hit, speed * dt, hitLayer);
+        bool isHit = Physics.Raycast(ray, out hit, speed * dt, hitLayer);
         return isHit;
     }
 
