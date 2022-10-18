@@ -64,27 +64,23 @@ Shader "MyUnlit/DecalUnlit"
 
             bool isDecal(float2 uv, float2 poinT, float size)
             {
-                float sizex = size;// _MainTex_ST.x;
-                float sizey = size;// _MainTex_ST.y;
-                return uv.x >= poinT.x - sizex / 2 &&
-                    uv.x <= poinT.x + sizex / 2 &&
-                    uv.y >= poinT.y - sizey / 2 &&
-                    uv.y <= poinT.y + sizey / 2;
+                return uv.x >= poinT.x - size / 2 &&
+                    uv.x <= poinT.x + size / 2 &&
+                    uv.y >= poinT.y - size / 2 &&
+                    uv.y <= poinT.y + size / 2;
             }
 
             bool isDecal(float2 uv, int i, float size)
             {
-                return isDecal(uv, float2( _Points[i].x * _MainTex_ST.x, _Points[i].y * _MainTex_ST.y), size);
+                return isDecal(uv, float2(_Points[i].x * _MainTex_ST.x, _Points[i].y * _MainTex_ST.y), size);
             }
 
             float2 GetDecalUV(float2 uv, float size, int i)
             {
                 ;
-                float sizex = size; // _MainTex_ST.x;
-                float sizey = size; // _MainTex_ST.y;
-                float2 decalPos = float2( _Points[i].x * _MainTex_ST.x, _Points[i].y * _MainTex_ST.y);
-                decalPos = (uv - decalPos + float2(sizex, sizey) / 2);
-                return decalPos/size;
+                float2 decalPos = float2(_Points[i].x * _MainTex_ST.x, _Points[i].y * _MainTex_ST.y);
+                decalPos = (uv - decalPos + float2(size, size) / 2);
+                return decalPos / size;
             }
 
             fixed4 frag(v2f i) : SV_Target
@@ -100,7 +96,6 @@ Shader "MyUnlit/DecalUnlit"
                     if (isDecal(i.uv, 0, .1))
                     {
                         float2 uv = GetDecalUV(i.uv, .1, 0);
-                        // uv = float2(uv.x * _MainTex_ST.x, uv.y* _MainTex_ST.y);
                         col = tex2D(_DecalTex, uv, .1, 0);
                         if (col.w < 0.001)
                         {
