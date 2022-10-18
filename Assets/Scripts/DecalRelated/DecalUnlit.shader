@@ -59,7 +59,18 @@ Shader "MyUnlit/DecalUnlit"
                 UNITY_TRANSFER_FOG(o, o.vertex);
                 return o;
             }
-
+           
+            bool isDecal(float2 uv, float4 poinT, float size)
+            {
+                return uv.x >= poinT.x - size/2 &&
+                    uv.x <= poinT.x + size/2 &&
+                        uv.y >= poinT.y - size/2 &&
+                            uv.y <= poinT.y + size/2;
+            }
+             bool isDecal(float2 uv, int i)
+            {
+                return isDecal(uv, _Points[i], .1);
+            }
             fixed4 frag(v2f i) : SV_Target
             {
                 // sample the texture
@@ -67,9 +78,12 @@ Shader "MyUnlit/DecalUnlit"
                 // // apply fog
                 // UNITY_APPLY_FOG(i.fogCoord, col);
                 float4 col = float4(1.0, 0.0, 0.0, 1.0);
-                if (_PointsCount > 1)
+                if (_PointsCount > 0)
                 {
-                    col = _Points[1];
+                   if(isDecal(i.uv, 0))
+                   {
+                       col = float4(0,1,0,1);
+                   }
                 }
                 else
                 {
