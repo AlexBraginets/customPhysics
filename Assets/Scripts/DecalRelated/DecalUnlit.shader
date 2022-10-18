@@ -91,20 +91,26 @@ Shader "MyUnlit/DecalUnlit"
                 // UNITY_APPLY_FOG(i.fogCoord, col);
                 // float4 col = tex2D(_MainTex, i.uv);
                 float4 col = tex2D(_MainTex, i.uv);
+                int decalIndex = -1;
                 if (_PointsCount > 0)
                 {
-                    if (isDecal(i.uv, 0, .1))
+                    for (int j = 0; j < _PointsCount; j++)
                     {
-                        float2 uv = GetDecalUV(i.uv, .1, 0);
-                        col = tex2D(_DecalTex, uv, .1, 0);
+                        if (isDecal(i.uv, j, .1))
+                        {
+                            decalIndex = j;
+                            break;
+                        }
+                    }
+                    if (decalIndex > -1)
+                    {
+                        float2 uv = GetDecalUV(i.uv, .1, decalIndex);
+                        col = tex2D(_DecalTex, uv);
                         if (col.w < 0.001)
                         {
                             col = tex2D(_MainTex, i.uv);
                         }
                     }
-                }
-                else
-                {
                 }
                 return col;
             }
