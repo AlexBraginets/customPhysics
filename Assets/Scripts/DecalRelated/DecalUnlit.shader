@@ -3,6 +3,7 @@ Shader "MyUnlit/DecalUnlit"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _DecalTex ("Texture", 2D) = "blue" {}
         _PointsCount("Point count", Int) = 2
 //        _Points("Points", Int) ={}
     }
@@ -49,6 +50,7 @@ Shader "MyUnlit/DecalUnlit"
             };
 
             sampler2D _MainTex;
+            sampler2D _DecalTex;
             float4 _MainTex_ST;
 
             v2f vert(appdata v)
@@ -67,9 +69,14 @@ Shader "MyUnlit/DecalUnlit"
                         uv.y >= poinT.y - size/2 &&
                             uv.y <= poinT.y + size/2;
             }
-             bool isDecal(float2 uv, int i)
+             bool isDecal(float2 uv, int i, float size)
             {
-                return isDecal(uv, _Points[i], .1);
+                return isDecal(uv, _Points[i], size);
+            }
+            float2 GetDecalUV(float2 uv, float size, int i)
+            {
+                float2 decalPos = _Points[i].xy;
+                return (uv - decalPos + size.xx/2)/size;
             }
             fixed4 frag(v2f i) : SV_Target
             {
@@ -77,17 +84,21 @@ Shader "MyUnlit/DecalUnlit"
                 // fixed4 col = tex2D(_MainTex, i.uv);
                 // // apply fog
                 // UNITY_APPLY_FOG(i.fogCoord, col);
-                float4 col = float4(1.0, 0.0, 0.0, 1.0);
+                float4 col = col = tex2D(_MainTex, i.uv);
                 if (_PointsCount > 0)
                 {
-                   if(isDecal(i.uv, 0))
+                   if(isDecal(i.uv, 0, .1))
                    {
-                       col = float4(0,1,0,1);
+                       col = tex2D(_DecalTex, GetDecalUV(i.uv, .1, 0));
+                       if(col.w < 0.001)
+                       {
+                           col = tex2D(_MainTex, i.uv);
+                       }
                    }
                 }
                 else
                 {
-                    col = float4(1, 0, 0, 1);
+                    
                 }
                 return col;
             }

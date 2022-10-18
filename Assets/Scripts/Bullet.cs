@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DecalRelated;
 using MeshManipulation;
 using UnityEngine;
 
@@ -56,6 +57,13 @@ public class Bullet : MonoBehaviour
             Vector3 hitDirVector3 = hit.normal;
             direction = Vector3.Reflect(direction, hitDirVector3);
             LastHit(hit);
+            var uv = hit.textureCoord;
+            var decalHandler = hit.collider.GetComponent<DecalHandler>();
+            if (decalHandler)
+            {
+                decalHandler.Add(uv);
+            }
+            
         }
     }
 

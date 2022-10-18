@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace DecalRelated
 {
-    [ExecuteAlways]
     public class DecalHandler : MonoBehaviour
     {
         [SerializeField] private Vector2[] points;
@@ -17,6 +16,10 @@ namespace DecalRelated
             renderer.material.SetInt("_PointsCount", points.Length);
         }
 
+        public void Add(Vector2 point)
+        {
+            points[0] = point;
+        }
         private Color[] GetColorArray()
         {
             var colorArray = new Color[10];
