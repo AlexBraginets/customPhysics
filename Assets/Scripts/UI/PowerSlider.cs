@@ -11,7 +11,11 @@ namespace UI
         [SerializeField] private Cannon cannon;
         [SerializeField] private Slider slider;
         [SerializeField] private TMP_Text powerLabel;
-
+        public float GetPower() => slider.value;
+        public void SetPower(int power)
+        {
+            slider.value = power;
+        }
         private void Awake()
         {
             slider.onValueChanged.AddListener(OnValueChanged);
